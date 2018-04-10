@@ -1,5 +1,5 @@
 import urllib.request,json
-from .models import Source, Article
+from .models import Source
 
 api_key = None
 
@@ -24,3 +24,20 @@ def get_sources():
             sources_results = process_sources(sources_results_list)
 
     return sources_results
+
+    def process_sources():
+    '''
+    Function to process the source results to change from JSON language
+    '''
+    source_results = []
+
+    for source_item in source_list:
+        id = source_item.get('id')
+        name = source_item.get('name')
+        description = source_item.get('description')
+
+        source_object = Source(id,name,description)
+
+        source_results.append(source_object)
+
+    return source_results
